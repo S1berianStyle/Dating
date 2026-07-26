@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Тест</title>
+  </head>
+  <body>
+    <h2>Тест encode/decode</h2>
+    <button onclick="testEncodeDecode()">Тест</button>
+    <div id="result"></div>
+
+    <script src="config.js"></script>
+    <script>
+      function testEncodeDecode() {
+        var testConfig = {
+          screen1: { title: "Тест", yesText: "Да", noText: "Нет" },
+        };
+
+        var encoded = encodeConfig(testConfig);
+        var decoded = decodeConfig(encoded);
+
+        document.getElementById("result").innerHTML =
+          "Исходный: " +
+          JSON.stringify(testConfig) +
+          "<br>" +
+          "Закодировано: " +
+          encoded +
+          "<br>" +
+          "Декодировано: " +
+          JSON.stringify(decoded) +
+          "<br>" +
+          "Совпадает: " +
+          (JSON.stringify(testConfig) === JSON.stringify(decoded));
+      }
+    </script>
+  </body>
+</html>

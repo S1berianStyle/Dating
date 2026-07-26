@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>
+      Приглашение на свидание онлайн — создать и отправить по ссылке
+    </title>
+    <meta
+      name="description"
+      content="Создай приглашение на свидание онлайн за пару минут. Выбор даты, времени и предпочтений для встречи. Отправьте красивое приглашение по ссылке и получите ответ от второй половинки."
+    />
+    <meta
+      property="og:title"
+      content="Приглашение на свидание онлайн — отправь по ссылке"
+    />
+    <meta
+      property="og:description"
+      content="Создай приглашение на свидание онлайн за пару минут. Выбор даты, времени и предпочтений для встречи."
+    />
+    <meta property="og:image" content="meeting/social-badge.png" />
+    <link rel="icon" href="meeting/social-badge.png" />
+    <link
+      rel="preload"
+      href="fonts/Comfortaa-SemiBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="fonts/Roboto/Roboto-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link rel="preload" href="meeting/tolkoteplo2.svg" as="image" />
+    <link rel="preload" href="meeting/video-poster.webp" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Лендинг -->
+      <section id="landing" class="landing">
+        <header class="header">
+          <a href="/" class="logo-link">
+            <img
+              src="meeting/tolkoteplo2.svg"
+              alt="Только тепло"
+              class="logo-img"
+            />
+          </a>
+        </header>
+
+        <div class="landing-hero">
+          <div class="phone-preview-wrap">
+            <div
+              class="phone-mockup phone-mockup--landing"
+              id="landing-preview"
+            >
+              <img
+                src="meeting/video-poster.webp"
+                alt=""
+                class="landing-poster"
+                width="346"
+                height="568"
+              />
+            </div>
+          </div>
+
+          <div class="hero-text">
+            <span class="badge">Онлайн-приглашение на свидание</span>
+            <h1 class="hero-title">
+              <span class="hero-title-line1"
+                >Пригласи на свидание так, чтобы это</span
+              >
+              <span class="hero-title-line2">запомнилось!</span>
+            </h1>
+            <p class="subtitle">
+              Создай милое приглашение на свидание и отправь ссылку человеку,
+              который тебе дорог ❤️
+            </p>
+            <button class="btn btn-primary btn-lg" id="start-create">
+              Создать приглашение 💌
+            </button>
+            <p class="social-proof">1000+ приглашений уже отправлено</p>
+          </div>
+        </div>
+
+        <section class="how-it-works">
+          <h2>Как это работает</h2>
+          <p class="section-accent">3 простых шага</p>
+          <div class="steps-grid">
+            <article class="step-card">
+              <span class="step-num">01</span>
+              <h3>Создайте приглашение за 2 минуты</h3>
+              <p>Несколько простых шагов — и ваше приглашение готово.</p>
+            </article>
+            <article class="step-card">
+              <span class="step-num">02</span>
+              <h3>Отправьте ссылку</h3>
+              <p>
+                Получатель откроет красивое онлайн-приглашение прямо у себя в
+                телефоне.
+              </p>
+            </article>
+            <article class="step-card">
+              <span class="step-num">03</span>
+              <h3>Получите ответ</h3>
+              <p>
+                Когда человек выберет дату, время и блюдо — вы увидите его
+                ответ.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="faq">
+          <h2>Частые вопросы</h2>
+          <details>
+            <summary>Как работает приглашение на свидание?</summary>
+            <p>
+              Вы оформляете приглашение, а гость выбирает дату, время и блюдо.
+              Его ответ можно скопировать и отправить вам.
+            </p>
+          </details>
+          <details>
+            <summary>Можно ли изменить тексты?</summary>
+            <p>
+              Да, все заголовки, кнопки и варианты блюд можно настроить в
+              конструкторе.
+            </p>
+          </details>
+          <details>
+            <summary>Нужно ли регистрироваться?</summary>
+            <p>Нет, приглашение можно создать без регистрации.</p>
+          </details>
+        </section>
+      </section>
+
+      <!-- Конструктор -->
+      <section id="constructor" class="constructor hidden">
+        <header class="header">
+          <a href="#" class="logo-link" id="logo-home">
+            <img
+              src="meeting/tolkoteplo2.svg"
+              alt="Только тепло"
+              class="logo-img"
+            />
+          </a>
+        </header>
+
+        <div class="progress-bar">
+          <div class="progress-line">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <div class="progress-dots">
+            <span class="dot active" data-step="1">1</span>
+            <span class="dot" data-step="2">2</span>
+            <span class="dot" data-step="3">3</span>
+            <span class="dot" data-step="4">4</span>
+            <span class="dot" data-step="5">5</span>
+          </div>
+        </div>
+
+        <div class="constructor-layout">
+          <div class="preview-panel">
+            <div class="screen-tabs" id="screen-tabs">
+              <button class="tab active" data-tab="1">Экран 1</button>
+              <button class="tab" data-tab="2">Экран 2</button>
+            </div>
+            <div class="phone-mockup" id="constructor-preview"></div>
+          </div>
+
+          <div class="editor-panel" id="editor-panel"></div>
+        </div>
+      </section>
+
+      <!-- Результат -->
+      <section id="result" class="result hidden">
+        <header class="header">
+          <a href="#" class="logo-link" id="logo-home-2">
+            <img
+              src="meeting/tolkoteplo2.svg"
+              alt="Только тепло"
+              class="logo-img"
+            />
+          </a>
+        </header>
+        <div class="result-card">
+          <h1>Приглашение готово! 🎉</h1>
+          <p>Отправьте эту ссылку человеку, которого приглашаете:</p>
+          <div class="link-box">
+            <input type="text" id="invite-link" readonly />
+            <button class="btn btn-primary" id="copy-link">Копировать</button>
+          </div>
+          <button class="btn btn-secondary" id="open-invite">
+            Открыть приглашение
+          </button>
+          <button class="btn btn-ghost" id="create-another">
+            Создать ещё одно
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      window.ASSETS = {
+        logo: "meeting/tolkoteplo2.svg",
+        videoPoster: "meeting/video-poster.webp",
+        heart: "meeting/heart.webp",
+        heart2: "meeting/heart2.webp",
+        kiss: "meeting/kiss.webp",
+        socialBadge: "meeting/social-badge.png",
+      };
+    </script>
+    <script src="config.js"></script>
+    <script src="preview.js"></script>
+    <script src="constructor.js"></script>
+    <script src="app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var preview = document.getElementById("constructor-preview");
+        if (preview && typeof DEFAULT_CONFIG !== "undefined") {
+          preview.innerHTML = renderPreview(DEFAULT_CONFIG, 1);
+        }
+      });
+    </script>
+  </body>
+</html>
