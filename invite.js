@@ -1,9 +1,7 @@
 (function () {
   var params = new URLSearchParams(window.location.search);
   var encoded = params.get("d");
-
   console.log("Получен параметр d:", encoded);
-
   if (encoded) {
     try {
       encoded = decodeURIComponent(encoded);
@@ -15,31 +13,23 @@
       console.log("Не удалось декодировать URI");
     }
   }
-
   var config = encoded ? decodeConfig(encoded) : null;
   console.log("Декодированная конфигурация:", config);
-
   var screen = document.getElementById("invite-screen");
-
   if (!config) {
     screen.innerHTML =
       '<div class="screen-content"><h2>Приглашение не найдено 😔</h2><p class="screen-subtitle">Ссылка повреждена или устарела</p></div>';
     return;
   }
-
   var step = 1;
   var answers = { date: "", time: "", food: "", foodEmoji: "" };
-
   function goTo(next) {
     step = next;
     render();
   }
-
-  // Функция отправки в Telegram
   function sendToTelegram(answers) {
     var token = "8936051544:AAGakRRtXc3QpH6OP_kUqe7xJTZ0SUa8GOM";
-    var chatId = 940402456; // ЗАМЕНИТЕ НА ВАШ CHAT_ID
-
+    var chatId = 123456789;
     var text =
       "🎉 НОВЫЙ ОТВЕТ НА ПРИГЛАШЕНИЕ! 🎉\n\n" +
       "📅 Дата: " +
@@ -55,21 +45,12 @@
       "\n" +
       "🔗 Ссылка: " +
       window.location.href;
-
     var url = "https://api.telegram.org/bot" + token + "/sendMessage";
-
     console.log("📤 Отправка в Telegram...");
-
     fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: text,
-        parse_mode: "HTML",
-      }),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: "HTML" }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -87,7 +68,6 @@
         showNotification("Ошибка соединения 😔");
       });
   }
-
   function showNotification(text) {
     var notification = document.createElement("div");
     notification.style.cssText =
@@ -99,7 +79,6 @@
       "animation: slideUp 0.5s ease;";
     notification.textContent = text;
     document.body.appendChild(notification);
-
     setTimeout(function () {
       notification.style.opacity = "0";
       notification.style.transition = "opacity 0.5s";
@@ -108,15 +87,12 @@
       }, 500);
     }, 3000);
   }
-
   function render() {
     screen.innerHTML = "";
-
     if (step === 1) {
       screen.innerHTML = renderScreen1(config, true);
       var yesBtn = screen.querySelector(".interactive-yes");
       var noBtn = screen.querySelector(".interactive-no");
-
       if (yesBtn) {
         yesBtn.addEventListener("click", function () {
           if (config.screen1.yesAnim === "hearts") {
@@ -128,7 +104,6 @@
           }
         });
       }
-
       if (noBtn) {
         setupNoButton(noBtn, config.screen1.noAnim, screen, function () {
           goTo(2);
@@ -144,21 +119,17 @@
       }
     } else if (step === 3) {
       screen.innerHTML = renderScreen3(config, answers);
-
       var dateInput = screen.querySelector(".date-input");
       var timeInput = screen.querySelector(".time-input");
       var submitBtn = screen.querySelector(".date-submit");
-
       function checkInputs() {
         if (dateInput && timeInput && submitBtn) {
           submitBtn.disabled = !dateInput.value || !timeInput.value;
         }
       }
-
       if (dateInput) dateInput.addEventListener("input", checkInputs);
       if (timeInput) timeInput.addEventListener("input", checkInputs);
       setTimeout(checkInputs, 50);
-
       if (submitBtn) {
         submitBtn.addEventListener("click", function () {
           if (dateInput && timeInput && dateInput.value && timeInput.value) {
@@ -170,20 +141,15 @@
       }
     } else if (step === 4) {
       screen.innerHTML = renderScreen4(config);
-
       var cards = screen.querySelectorAll(".food-card");
       for (var i = 0; i < cards.length; i++) {
         (function (card, index) {
           card.addEventListener("click", function () {
             var dish = config.screen4.dishes[index];
-
             if (dish) {
               answers.food = dish.name;
               answers.foodEmoji = dish.emoji;
-
-              // ОТПРАВЛЯЕМ УВЕДОМЛЕНИЕ В TELEGRAM
               sendToTelegram(answers);
-
               var allCards = screen.querySelectorAll(".food-card");
               for (var j = 0; j < allCards.length; j++) {
                 allCards[j].classList.remove("selected");
@@ -198,7 +164,6 @@
       }
     } else if (step === 5) {
       screen.innerHTML = renderScreen5(config, answers);
-
       var response = document.createElement("div");
       response.className = "response-card";
       response.innerHTML =
@@ -212,12 +177,10 @@
         (answers.food || "не выбрано") +
         "<br><br>" +
         '<button class="btn btn-primary" id="copy-response" style="width:100%">Скопировать ответ</button>';
-
       var content = screen.querySelector(".screen-content");
       if (content) {
         content.appendChild(response);
       }
-
       var copyBtn = document.getElementById("copy-response");
       if (copyBtn) {
         copyBtn.addEventListener("click", function () {
@@ -248,7 +211,6 @@
       }
     }
   }
-
   function fallbackCopy(text, btn) {
     var textarea = document.createElement("textarea");
     textarea.value = text;
@@ -264,6 +226,5 @@
       btn.textContent = "Скопировать ответ";
     }, 2000);
   }
-
   render();
 })();

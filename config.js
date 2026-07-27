@@ -123,7 +123,6 @@ function renderIllustration(src, alt) {
   );
 }
 
-// Глобальные переменные
 window.ASSETS = ASSETS;
 window.IMAGE_OPTIONS = IMAGE_OPTIONS;
 window.DEFAULT_CONFIG = DEFAULT_CONFIG;
