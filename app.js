@@ -38,7 +38,6 @@ function onInviteCreated(cfg) {
 window.onInviteCreated = onInviteCreated;
 
 function initApp() {
-  // Кнопка "Создать приглашение" на лендинге
   var startBtn = document.getElementById("start-create");
   if (startBtn) {
     startBtn.addEventListener("click", function () {
@@ -49,7 +48,6 @@ function initApp() {
     });
   }
 
-  // Кнопка "Копировать"
   var copyBtn = document.getElementById("copy-link");
   if (copyBtn) {
     copyBtn.addEventListener("click", function () {
@@ -68,7 +66,6 @@ function initApp() {
     });
   }
 
-  // Кнопка "Открыть приглашение"
   var openBtn = document.getElementById("open-invite");
   if (openBtn) {
     openBtn.addEventListener("click", function () {
@@ -79,7 +76,6 @@ function initApp() {
     });
   }
 
-  // Кнопка "Создать ещё одно"
   var anotherBtn = document.getElementById("create-another");
   if (anotherBtn) {
     anotherBtn.addEventListener("click", function () {
@@ -90,7 +86,6 @@ function initApp() {
     });
   }
 
-  // Логотипы для возврата на главную
   var logoIds = ["logo-home", "logo-home-2"];
   for (var i = 0; i < logoIds.length; i++) {
     var el = document.getElementById(logoIds[i]);
