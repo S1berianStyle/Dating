@@ -1,34 +1,34 @@
 const ASSETS = {
-  logo: "./meeting/tolkoteplo2.svg",
-  videoPoster: "./meeting/video-poster.webp",
-  heart: "./meeting/heart.webp",
-  heart2: "./meeting/heart2.webp",
-  kiss: "./meeting/kiss.webp",
-  socialBadge: "./meeting/social-badge.png",
+  logo: "meeting/tolkoteplo2.svg",
+  videoPoster: "meeting/video-poster.webp",
+  heart: "meeting/heart.webp",
+  heart2: "meeting/heart2.webp",
+  kiss: "meeting/kiss.webp",
+  socialBadge: "meeting/social-badge.png",
 };
 
 const IMAGE_OPTIONS = {
   step1: [
-    "./meeting/step1/1.webp",
-    "./meeting/step1/2.webp",
-    "./meeting/step1/3.webp",
+    "meeting/step1/1.webp",
+    "meeting/step1/2.webp",
+    "meeting/step1/3.webp",
   ],
   step2: [
-    "./meeting/step2/1.webp",
-    "./meeting/step2/2.webp",
-    "./meeting/step2/3.webp",
+    "meeting/step2/1.webp",
+    "meeting/step2/2.webp",
+    "meeting/step2/3.webp",
   ],
   step3: [
-    "./meeting/step3/1.webp",
-    "./meeting/step3/2.webp",
-    "./meeting/step3/3.webp",
-    "./meeting/step3/4.webp",
+    "meeting/step3/1.webp",
+    "meeting/step3/2.webp",
+    "meeting/step3/3.webp",
+    "meeting/step3/4.webp",
   ],
 };
 
 const DEFAULT_CONFIG = {
   screen1: {
-    image: "./meeting/step1/1.webp",
+    image: "meeting/step1/1.webp",
     title: "Ты пойдешь со мной\nна свидание?",
     yesText: "Да ❤️",
     noText: "Нет",
@@ -36,13 +36,13 @@ const DEFAULT_CONFIG = {
     noAnim: "kiss",
   },
   screen2: {
-    image: "./meeting/step2/1.webp",
+    image: "meeting/step2/1.webp",
     title: "Подожди, ты действительно сказала да?",
     subtitle: 'Я был готов что скажешь "нет" ахах',
     confirmText: "Да Да дА ❤️",
   },
   screen3: {
-    image: "./meeting/step3/3.webp",
+    image: "meeting/step3/3.webp",
     title: "И так... Когда ты свободна?",
     buttonText: "Выбери дату ❤️",
   },
@@ -59,7 +59,7 @@ const DEFAULT_CONFIG = {
     ],
   },
   screen5: {
-    image: "./meeting/e1.webp",
+    image: "meeting/e1.webp",
     title: "Рад что не отказалась ❤️",
     description: "Будь готова к {date} в {time}, я приеду за тобой",
   },
@@ -123,7 +123,6 @@ function renderIllustration(src, alt) {
   );
 }
 
-// Глобальные переменные
 window.ASSETS = ASSETS;
 window.IMAGE_OPTIONS = IMAGE_OPTIONS;
 window.DEFAULT_CONFIG = DEFAULT_CONFIG;
