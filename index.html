@@ -21,38 +21,40 @@
       property="og:description"
       content="Создай приглашение на свидание онлайн за пару минут. Выбор даты, времени и предпочтений для встречи."
     />
-    <meta property="og:image" content="/Dating/meeting/social-badge.png" />
-    <link rel="icon" href="/Dating/meeting/social-badge.png" />
+    <meta property="og:image" content="./meeting/social-badge.png" />
+    <link rel="icon" href="./meeting/social-badge.png" />
     <link
       rel="preload"
-      href="/Dating/fonts/Comfortaa-SemiBold.woff2"
+      href="./fonts/Comfortaa-SemiBold.woff2"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
     />
     <link
       rel="preload"
-      href="/Dating/fonts/Roboto/Roboto-Medium.woff2"
+      href="./fonts/Roboto/Roboto-Medium.woff2"
       as="font"
       type="font/woff2"
       crossorigin="anonymous"
     />
-    <link rel="preload" href="/Dating/meeting/tolkoteplo2.svg" as="image" />
-    <link rel="preload" href="/Dating/meeting/video-poster.webp" as="image" />
-    <link rel="stylesheet" href="/Dating/styles.css" />
+    <link rel="preload" href="./meeting/tolkoteplo2.svg" as="image" />
+    <link rel="preload" href="./meeting/video-poster.webp" as="image" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div id="app">
+      <!-- Лендинг -->
       <section id="landing" class="landing">
         <header class="header">
           <a href="/" class="logo-link">
             <img
-              src="/Dating/meeting/tolkoteplo2.svg"
+              src="./meeting/tolkoteplo2.svg"
               alt="Только тепло"
               class="logo-img"
             />
           </a>
         </header>
+
         <div class="landing-hero">
           <div class="phone-preview-wrap">
             <div
@@ -60,7 +62,7 @@
               id="landing-preview"
             >
               <img
-                src="/Dating/meeting/video-poster.webp"
+                src="./meeting/video-poster.webp"
                 alt=""
                 class="landing-poster"
                 width="346"
@@ -68,6 +70,7 @@
               />
             </div>
           </div>
+
           <div class="hero-text">
             <span class="badge">Онлайн-приглашение на свидание</span>
             <h1 class="hero-title">
@@ -86,6 +89,7 @@
             <p class="social-proof">1000+ приглашений уже отправлено</p>
           </div>
         </div>
+
         <section class="how-it-works">
           <h2>Как это работает</h2>
           <p class="section-accent">3 простых шага</p>
@@ -113,6 +117,7 @@
             </article>
           </div>
         </section>
+
         <section class="faq">
           <h2>Частые вопросы</h2>
           <details>
@@ -135,16 +140,19 @@
           </details>
         </section>
       </section>
+
+      <!-- Конструктор -->
       <section id="constructor" class="constructor hidden">
         <header class="header">
           <a href="#" class="logo-link" id="logo-home">
             <img
-              src="/Dating/meeting/tolkoteplo2.svg"
+              src="./meeting/tolkoteplo2.svg"
               alt="Только тепло"
               class="logo-img"
             />
           </a>
         </header>
+
         <div class="progress-bar">
           <div class="progress-line">
             <div class="progress-fill" id="progress-fill"></div>
@@ -157,6 +165,7 @@
             <span class="dot" data-step="5">5</span>
           </div>
         </div>
+
         <div class="constructor-layout">
           <div class="preview-panel">
             <div class="screen-tabs" id="screen-tabs">
@@ -165,14 +174,17 @@
             </div>
             <div class="phone-mockup" id="constructor-preview"></div>
           </div>
+
           <div class="editor-panel" id="editor-panel"></div>
         </div>
       </section>
+
+      <!-- Результат -->
       <section id="result" class="result hidden">
         <header class="header">
           <a href="#" class="logo-link" id="logo-home-2">
             <img
-              src="/Dating/meeting/tolkoteplo2.svg"
+              src="./meeting/tolkoteplo2.svg"
               alt="Только тепло"
               class="logo-img"
             />
@@ -194,20 +206,21 @@
         </div>
       </section>
     </div>
+
     <script>
       window.ASSETS = {
-        logo: "/Dating/meeting/tolkoteplo2.svg",
-        videoPoster: "/Dating/meeting/video-poster.webp",
-        heart: "/Dating/meeting/heart.webp",
-        heart2: "/Dating/meeting/heart2.webp",
-        kiss: "/Dating/meeting/kiss.webp",
-        socialBadge: "/Dating/meeting/social-badge.png",
+        logo: "./meeting/tolkoteplo2.svg",
+        videoPoster: "./meeting/video-poster.webp",
+        heart: "./meeting/heart.webp",
+        heart2: "./meeting/heart2.webp",
+        kiss: "./meeting/kiss.webp",
+        socialBadge: "./meeting/social-badge.png",
       };
     </script>
-    <script src="/Dating/config.js"></script>
-    <script src="/Dating/preview.js"></script>
-    <script src="/Dating/constructor.js"></script>
-    <script src="/Dating/app.js"></script>
+    <script src="config.js"></script>
+    <script src="preview.js"></script>
+    <script src="constructor.js"></script>
+    <script src="app.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         var preview = document.getElementById("constructor-preview");

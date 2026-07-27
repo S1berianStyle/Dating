@@ -37,6 +37,7 @@ function imagePicker(stepKey, field, current) {
 function renderStep1() {
   var panel = editorPanel();
   if (!panel) return;
+
   panel.innerHTML =
     "" +
     "<h2>Настрой первые экраны приглашения</h2>" +
@@ -86,12 +87,15 @@ function renderStep1() {
     currentConfig.screen2.confirmText +
     '"></div>' +
     '<div class="editor-nav"><span></span><button class="btn btn-primary" id="next-step">Продолжить</button></div>';
+
   bindStep1Events();
 }
 
 function bindStep1Events() {
   var panel = editorPanel();
   if (!panel) return;
+
+  // Выбор изображений
   var pickers = panel.querySelectorAll(".image-picker");
   if (pickers[0]) {
     var opts = pickers[0].querySelectorAll(".image-option");
@@ -117,6 +121,8 @@ function bindStep1Events() {
       })(opts2[j]);
     }
   }
+
+  // Текстовые поля
   var fields = [
     { id: "s1-title", obj: currentConfig.screen1, key: "title" },
     { id: "s1-yes", obj: currentConfig.screen1, key: "yesText" },
@@ -136,6 +142,8 @@ function bindStep1Events() {
       }
     })(fields[k]);
   }
+
+  // Радиокнопки анимаций
   var yesRadios = panel.querySelectorAll('input[name="yesAnim"]');
   for (var r = 0; r < yesRadios.length; r++) {
     yesRadios[r].addEventListener("change", function () {
@@ -148,6 +156,8 @@ function bindStep1Events() {
       currentConfig.screen1.noAnim = this.value;
     });
   }
+
+  // Кнопка "Продолжить"
   var nextBtn = document.getElementById("next-step");
   if (nextBtn) {
     nextBtn.addEventListener("click", function () {
@@ -160,6 +170,7 @@ function bindStep1Events() {
 function renderStep2() {
   var panel = editorPanel();
   if (!panel) return;
+
   panel.innerHTML =
     "" +
     "<h2>Экран выбора даты и времени</h2>" +
@@ -172,6 +183,8 @@ function renderStep2() {
     currentConfig.screen3.buttonText +
     '"></div>' +
     '<div class="editor-nav"><button class="btn btn-ghost" id="prev-step">← Назад</button><button class="btn btn-primary" id="next-step">Продолжить</button></div>';
+
+  // Выбор изображения
   var opts = panel.querySelectorAll(".image-option");
   for (var i = 0; i < opts.length; i++) {
     (function (opt) {
@@ -182,6 +195,8 @@ function renderStep2() {
       });
     })(opts[i]);
   }
+
+  // Текстовые поля
   var titleEl = document.getElementById("s3-title");
   if (titleEl) {
     titleEl.addEventListener("input", function () {
@@ -196,6 +211,8 @@ function renderStep2() {
       updatePreview();
     });
   }
+
+  // Кнопки
   var prevBtn = document.getElementById("prev-step");
   if (prevBtn) {
     prevBtn.addEventListener("click", function () {
@@ -215,6 +232,7 @@ function renderStep2() {
 function renderStep3() {
   var panel = editorPanel();
   if (!panel) return;
+
   var dishesHtml = "";
   for (var i = 0; i < currentConfig.screen4.dishes.length; i++) {
     var d = currentConfig.screen4.dishes[i];
@@ -243,6 +261,7 @@ function renderStep3() {
       '" style="flex:1">' +
       "</div></details>";
   }
+
   panel.innerHTML =
     "" +
     "<h2>Настрой экран выбора блюда</h2>" +
@@ -258,6 +277,8 @@ function renderStep3() {
     "</div>" +
     '<button class="btn btn-secondary" id="add-dish" style="margin-top:12px;width:100%">+ Добавить блюдо</button>' +
     '<div class="editor-nav"><button class="btn btn-ghost" id="prev-step">← Назад</button><button class="btn btn-primary" id="next-step">Продолжить</button></div>';
+
+  // Заголовки
   var titleEl = document.getElementById("s4-title");
   if (titleEl) {
     titleEl.addEventListener("input", function () {
@@ -272,6 +293,8 @@ function renderStep3() {
       updatePreview();
     });
   }
+
+  // Блюда - эмодзи
   var emojiInputs = panel.querySelectorAll(".dish-emoji-input");
   for (var e = 0; e < emojiInputs.length; e++) {
     (function (inp) {
@@ -284,6 +307,8 @@ function renderStep3() {
       });
     })(emojiInputs[e]);
   }
+
+  // Блюда - названия
   var nameInputs = panel.querySelectorAll('[data-field="name"]');
   for (var n = 0; n < nameInputs.length; n++) {
     (function (inp) {
@@ -296,6 +321,8 @@ function renderStep3() {
       });
     })(nameInputs[n]);
   }
+
+  // Удаление блюда
   var deleteBtns = panel.querySelectorAll(".btn-delete");
   for (var d = 0; d < deleteBtns.length; d++) {
     (function (btn) {
@@ -309,6 +336,8 @@ function renderStep3() {
       });
     })(deleteBtns[d]);
   }
+
+  // Добавление блюда
   var addBtn = document.getElementById("add-dish");
   if (addBtn) {
     addBtn.addEventListener("click", function () {
@@ -318,6 +347,8 @@ function renderStep3() {
       updatePreview();
     });
   }
+
+  // Кнопки навигации
   var prevBtn = document.getElementById("prev-step");
   if (prevBtn) {
     prevBtn.addEventListener("click", function () {
@@ -337,6 +368,7 @@ function renderStep3() {
 function renderStep4() {
   var panel = editorPanel();
   if (!panel) return;
+
   panel.innerHTML =
     "" +
     "<h2>Финальный экран</h2>" +
@@ -349,6 +381,8 @@ function renderStep4() {
     currentConfig.screen5.description +
     "</textarea></div>" +
     '<div class="editor-nav"><button class="btn btn-ghost" id="prev-step">← Назад</button><button class="btn btn-primary" id="create-invite">Создать приглашение ❤️</button></div>';
+
+  // Выбор изображения
   var opts = panel.querySelectorAll(".image-option");
   for (var i = 0; i < opts.length; i++) {
     (function (opt) {
@@ -359,6 +393,8 @@ function renderStep4() {
       });
     })(opts[i]);
   }
+
+  // Заголовок
   var titleEl = document.getElementById("s5-title");
   if (titleEl) {
     titleEl.addEventListener("input", function () {
@@ -366,6 +402,8 @@ function renderStep4() {
       updatePreview();
     });
   }
+
+  // Описание
   var descEl = document.getElementById("s5-desc");
   if (descEl) {
     descEl.addEventListener("input", function () {
@@ -373,6 +411,8 @@ function renderStep4() {
       updatePreview();
     });
   }
+
+  // Назад
   var prevBtn = document.getElementById("prev-step");
   if (prevBtn) {
     prevBtn.addEventListener("click", function () {
@@ -380,6 +420,8 @@ function renderStep4() {
       renderStep();
     });
   }
+
+  // Создать приглашение
   var createBtn = document.getElementById("create-invite");
   if (createBtn) {
     createBtn.addEventListener("click", function () {
@@ -395,12 +437,14 @@ function renderStep4() {
 function updateProgress() {
   var dotMap = { 1: 1, 2: 2, 3: 3, 4: 4 };
   var activeDot = dotMap[currentStep] || 1;
+
   var dots = document.querySelectorAll(".dot");
   for (var i = 0; i < dots.length; i++) {
     var step = parseInt(dots[i].dataset.step);
     dots[i].classList.toggle("active", step === activeDot);
     dots[i].classList.toggle("done", step < activeDot);
   }
+
   var fill = document.getElementById("progress-fill");
   if (fill) {
     fill.style.width = ((activeDot - 1) / 4) * 100 + "%";
@@ -410,6 +454,7 @@ function updateProgress() {
 function updatePreview() {
   var el = previewEl();
   if (!el) return;
+
   if (currentStep <= 2) {
     var tabs = screenTabs();
     if (tabs) tabs.classList.remove("hidden");
@@ -424,6 +469,7 @@ function updatePreview() {
 function renderStep() {
   updatePreview();
   updateProgress();
+
   if (currentStep === 1) renderStep1();
   else if (currentStep === 2) renderStep2();
   else if (currentStep === 3) renderStep3();
@@ -434,6 +480,8 @@ function initConstructor() {
   currentStep = 1;
   previewTab = 1;
   currentConfig = cloneConfig();
+
+  // Настройка вкладок
   var tabs = screenTabs();
   if (tabs) {
     var tabBtns = tabs.querySelectorAll(".tab");
@@ -453,8 +501,10 @@ function initConstructor() {
       })(tabBtns[i]);
     }
   }
+
   renderStep();
 }
 
+// Делаем функции глобальными
 window.initConstructor = initConstructor;
 window.currentConfig = currentConfig;

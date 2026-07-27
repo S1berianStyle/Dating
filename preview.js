@@ -141,6 +141,8 @@ function renderPreview(config, screen, extra) {
   }
 }
 
+// ===== АНИМАЦИИ =====
+
 function burstHearts(container) {
   var overlay = document.createElement("div");
   overlay.className = "hearts-burst";
@@ -224,6 +226,7 @@ function moveNoButton(btn) {
   btn.style.transform = "translate(" + x + "px, " + y + "px)";
 }
 
+// Глобальные функции
 window.renderScreen1 = renderScreen1;
 window.renderScreen2 = renderScreen2;
 window.renderScreen3 = renderScreen3;

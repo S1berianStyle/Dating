@@ -1,34 +1,38 @@
 @font-face {
   font-family: "Comfortaa";
-  src: url("/Dating/fonts/Comfortaa-SemiBold.woff2") format("woff2");
+  src: url("fonts/Comfortaa-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "NauryzRedKeds";
-  src: url("/Dating/fonts/NauryzRedKeds.woff2") format("woff2");
+  src: url("fonts/NauryzRedKeds.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Roboto-Medium";
-  src: url("/Dating/fonts/Roboto/Roboto-Medium.woff2") format("woff2");
+  src: url("fonts/Roboto/Roboto-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Roboto-Bold";
-  src: url("/Dating/fonts/Roboto/Roboto-Bold.woff2") format("woff2");
+  src: url("fonts/Roboto/Roboto-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Roboto-SemiBold";
-  src: url("/Dating/fonts/Roboto/Roboto-SemiBold.woff2") format("woff2");
+  src: url("fonts/Roboto/Roboto-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -193,12 +197,14 @@ body {
     align-items: flex-start;
     margin-top: 2rem;
   }
+
   .phone-preview-wrap {
     order: 1;
     flex-shrink: 0;
     position: sticky;
     top: 1.5rem;
   }
+
   .hero-text {
     order: 2;
     flex: 1;
@@ -989,13 +995,16 @@ body {
   .steps-grid {
     grid-template-columns: 1fr;
   }
+
   .preview-panel {
     position: static;
   }
+
   .hero-text {
     text-align: center;
     margin: 0 auto;
   }
+
   .btn-lg {
     margin: 0 auto;
     display: block;
@@ -1006,9 +1015,11 @@ body {
   .steps-grid {
     grid-template-columns: 1fr;
   }
+
   .editor-panel {
     padding: 20px;
   }
+
   .link-box {
     flex-direction: column;
   }

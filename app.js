@@ -16,11 +16,14 @@ function onInviteCreated(cfg) {
   try {
     var encoded = encodeConfig(cfg);
     console.log("Длина закодированной строки:", encoded.length);
+
     var currentUrl = window.location.href;
     var base = currentUrl.substring(0, currentUrl.lastIndexOf("/") + 1);
     var link = base + "invite.html?d=" + encodeURIComponent(encoded);
+
     console.log("Ссылка:", link);
     console.log("Длина ссылки:", link.length);
+
     var linkInput = document.getElementById("invite-link");
     if (linkInput) {
       linkInput.value = link;
@@ -44,6 +47,7 @@ function initApp() {
       }
     });
   }
+
   var copyBtn = document.getElementById("copy-link");
   if (copyBtn) {
     copyBtn.addEventListener("click", function () {
@@ -61,6 +65,7 @@ function initApp() {
       }
     });
   }
+
   var openBtn = document.getElementById("open-invite");
   if (openBtn) {
     openBtn.addEventListener("click", function () {
@@ -70,6 +75,7 @@ function initApp() {
       }
     });
   }
+
   var anotherBtn = document.getElementById("create-another");
   if (anotherBtn) {
     anotherBtn.addEventListener("click", function () {
@@ -79,6 +85,7 @@ function initApp() {
       }
     });
   }
+
   var logoIds = ["logo-home", "logo-home-2"];
   for (var i = 0; i < logoIds.length; i++) {
     var el = document.getElementById(logoIds[i]);
