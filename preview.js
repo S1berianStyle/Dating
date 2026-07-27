@@ -149,7 +149,7 @@ function burstHearts(container) {
   for (var i = 0; i < 14; i++) {
     var h = document.createElement("img");
     h.className = "heart-particle";
-    h.src = "./meeting/heart2.webp";
+    h.src = "/Dating/meeting/heart2.webp";
     h.alt = "";
     h.style.left = 10 + Math.random() * 70 + "%";
     h.style.top = 35 + Math.random() * 35 + "%";
@@ -166,7 +166,8 @@ function burstHearts(container) {
 function showKiss(container) {
   var kiss = document.createElement("div");
   kiss.className = "kiss-overlay";
-  kiss.innerHTML = '<img src="./meeting/kiss.webp" alt="" class="kiss-img">';
+  kiss.innerHTML =
+    '<img src="/Dating/meeting/kiss.webp" alt="" class="kiss-img">';
   container.appendChild(kiss);
   setTimeout(function () {
     kiss.remove();
@@ -176,7 +177,7 @@ function showKiss(container) {
 function playYesAnimation(container, onDone) {
   var heart = document.createElement("img");
   heart.className = "yes-heart-flash";
-  heart.src = "./meeting/heart.webp";
+  heart.src = "/Dating/meeting/heart.webp";
   heart.alt = "";
   container.appendChild(heart);
   container.classList.add("shake");

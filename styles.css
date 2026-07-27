@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Comfortaa";
-  src: url("fonts/Comfortaa-SemiBold.woff2") format("woff2");
+  src: url("/Dating/fonts/Comfortaa-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "NauryzRedKeds";
-  src: url("fonts/NauryzRedKeds.woff2") format("woff2");
+  src: url("/Dating/fonts/NauryzRedKeds.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "Roboto-Medium";
-  src: url("fonts/Roboto/Roboto-Medium.woff2") format("woff2");
+  src: url("/Dating/fonts/Roboto/Roboto-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 
 @font-face {
   font-family: "Roboto-Bold";
-  src: url("fonts/Roboto/Roboto-Bold.woff2") format("woff2");
+  src: url("/Dating/fonts/Roboto/Roboto-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -32,13 +32,19 @@
 
 @font-face {
   font-family: "Roboto-SemiBold";
-  src: url("fonts/Roboto/Roboto-SemiBold.woff2") format("woff2");
+  src: url("/Dating/fonts/Roboto/Roboto-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 :root {
   --bg: #fef1f8;
@@ -56,12 +62,16 @@
   --radius-phone: 2.5rem;
   --radius-pill: 60px;
   --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
-  --font: "Comfortaa", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-title: "Roboto-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font: "Comfortaa", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  --font-title: "Roboto-Medium", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif;
   --font-accent: "NauryzRedKeds", "Apple Chancery", cursive, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: var(--font);
@@ -71,7 +81,9 @@ body {
   line-height: 1.5;
 }
 
-.hidden { display: none !important; }
+.hidden {
+  display: none !important;
+}
 
 .header {
   text-align: center;
@@ -90,7 +102,9 @@ body {
 }
 
 @media (min-width: 641px) {
-  .logo-img { height: 2.5rem; }
+  .logo-img {
+    height: 2.5rem;
+  }
 }
 
 .btn {
@@ -102,7 +116,9 @@ body {
   border-radius: var(--radius-pill);
 }
 
-.btn:active { transform: scale(0.97); }
+.btn:active {
+  transform: scale(0.97);
+}
 
 .btn-primary {
   background: linear-gradient(to top right, #e34f7b, #f895b3);
@@ -112,7 +128,9 @@ body {
   font-size: 1rem;
 }
 
-.btn-primary:hover { filter: brightness(1.03); }
+.btn-primary:hover {
+  filter: brightness(1.03);
+}
 
 .btn-primary:disabled {
   opacity: 0.45;
@@ -195,10 +213,15 @@ body {
 }
 
 @media (max-width: 640px) {
-  .phone-preview-wrap { display: none; }
+  .phone-preview-wrap {
+    display: none;
+  }
 }
 
-.phone-preview-wrap { display: flex; justify-content: center; }
+.phone-preview-wrap {
+  display: flex;
+  justify-content: center;
+}
 
 .phone-mockup {
   width: 100%;
@@ -273,7 +296,10 @@ body {
 }
 
 @media (min-width: 641px) {
-  .hero-text { text-align: left; margin: 0; }
+  .hero-text {
+    text-align: left;
+    margin: 0;
+  }
 }
 
 .badge {
@@ -311,7 +337,9 @@ body {
 }
 
 @media (max-width: 579px) {
-  .hero-title-line1 { font-size: 26px; }
+  .hero-title-line1 {
+    font-size: 26px;
+  }
   .hero-title-line2 {
     display: block;
     width: 100%;
@@ -335,14 +363,16 @@ body {
   color: var(--text-muted);
 }
 
-.how-it-works, .faq {
+.how-it-works,
+.faq {
   max-width: 1000px;
   margin: 80px auto;
   padding: 0 24px;
   text-align: center;
 }
 
-.how-it-works h2, .faq h2 {
+.how-it-works h2,
+.faq h2 {
   font-family: var(--font-title);
   font-size: 1.8rem;
   margin-bottom: 8px;
@@ -394,7 +424,9 @@ body {
   font-size: 0.9rem;
 }
 
-.faq { text-align: left; }
+.faq {
+  text-align: left;
+}
 
 .faq details {
   background: var(--bg-card);
@@ -411,7 +443,9 @@ body {
   list-style: none;
 }
 
-.faq summary::-webkit-details-marker { display: none; }
+.faq summary::-webkit-details-marker {
+  display: none;
+}
 
 .faq p {
   color: var(--text-muted);
@@ -419,7 +453,9 @@ body {
   font-size: 0.9rem;
 }
 
-.constructor { padding-bottom: 60px; }
+.constructor {
+  padding-bottom: 60px;
+}
 
 .progress-bar {
   max-width: 42rem;
@@ -466,7 +502,8 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-.dot.active, .dot.done {
+.dot.active,
+.dot.done {
   background: var(--pink);
   color: #fff;
 }
@@ -481,7 +518,10 @@ body {
   align-items: start;
 }
 
-.preview-panel { position: sticky; top: 24px; }
+.preview-panel {
+  position: sticky;
+  top: 24px;
+}
 
 .screen-tabs {
   display: flex;
@@ -533,7 +573,9 @@ body {
   margin-bottom: 24px;
 }
 
-.field { margin-bottom: 20px; }
+.field {
+  margin-bottom: 20px;
+}
 
 .field label {
   display: block;
@@ -542,7 +584,8 @@ body {
   margin-bottom: 6px;
 }
 
-.field input, .field textarea {
+.field input,
+.field textarea {
   width: 100%;
   font-family: var(--font);
   border: 2px solid var(--pink-light);
@@ -554,7 +597,8 @@ body {
   resize: vertical;
 }
 
-.field input:focus, .field textarea:focus {
+.field input:focus,
+.field textarea:focus {
   outline: none;
   border-color: var(--pink);
 }
@@ -588,10 +632,19 @@ body {
   background: var(--pink-soft);
 }
 
-.radio-option input { margin-top: 3px; accent-color: var(--pink); }
+.radio-option input {
+  margin-top: 3px;
+  accent-color: var(--pink);
+}
 
-.radio-option strong { display: block; font-size: 0.9rem; }
-.radio-option span { font-size: 0.8rem; color: var(--text-muted); }
+.radio-option strong {
+  display: block;
+  font-size: 0.9rem;
+}
+.radio-option span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
 
 .image-picker {
   display: flex;
@@ -624,7 +677,11 @@ body {
   box-shadow: 0 0 0 2px var(--pink-soft);
 }
 
-.dish-list { display: flex; flex-direction: column; gap: 12px; }
+.dish-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
 .dish-item {
   border: 2px solid var(--pink-light);
@@ -638,7 +695,9 @@ body {
   list-style: none;
 }
 
-.dish-item summary::-webkit-details-marker { display: none; }
+.dish-item summary::-webkit-details-marker {
+  display: none;
+}
 
 .dish-row {
   display: flex;
@@ -681,9 +740,15 @@ body {
   padding: 20px;
 }
 
-.invite-app { width: 100%; display: flex; justify-content: center; }
+.invite-app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
-.invite-phone { min-height: 560px; }
+.invite-phone {
+  min-height: 560px;
+}
 
 .screen-subtitle {
   color: var(--text-muted);
@@ -723,22 +788,43 @@ body {
   text-align: center;
 }
 
-.food-card:hover, .food-card.selected {
+.food-card:hover,
+.food-card.selected {
   border-color: var(--pink);
   background: var(--pink-soft);
 }
 
-.food-card .emoji { font-size: 2rem; display: block; margin-bottom: 6px; }
-.food-card .name { font-size: 0.85rem; font-weight: 600; }
+.food-card .emoji {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 6px;
+}
+.food-card .name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
 
-.shake { animation: shake 0.5s ease; }
+.shake {
+  animation: shake 0.5s ease;
+}
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-8px); }
-  40% { transform: translateX(8px); }
-  60% { transform: translateX(-6px); }
-  80% { transform: translateX(6px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
 }
 
 .hearts-burst {
@@ -770,14 +856,29 @@ body {
 }
 
 @keyframes heart-pop {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
-  40% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
-  100% { opacity: 0; transform: translate(-50%, -70%) scale(1.3); }
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -70%) scale(1.3);
+  }
 }
 
 @keyframes float-up {
-  0% { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(-120px) scale(1.4); }
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(1.4);
+  }
 }
 
 .kiss-overlay {
@@ -799,14 +900,27 @@ body {
 }
 
 @keyframes kiss-pop {
-  0% { opacity: 0; transform: scale(0.5); }
-  35% { opacity: 1; transform: scale(1.08); }
-  100% { opacity: 1; transform: scale(1); }
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .btn-no.shrink {
@@ -862,7 +976,9 @@ body {
   background: var(--bg);
 }
 
-.result-card .btn { margin: 8px 4px; }
+.result-card .btn {
+  margin: 8px 4px;
+}
 
 .response-card {
   margin-top: 24px;
@@ -875,21 +991,36 @@ body {
 }
 
 @media (max-width: 900px) {
-  .constructor-layout, .steps-grid {
+  .constructor-layout,
+  .steps-grid {
     grid-template-columns: 1fr;
   }
 
-  .preview-panel { position: static; }
+  .preview-panel {
+    position: static;
+  }
 
-  .hero-text { text-align: center; margin: 0 auto; }
+  .hero-text {
+    text-align: center;
+    margin: 0 auto;
+  }
 
-  .btn-lg { margin: 0 auto; display: block; }
+  .btn-lg {
+    margin: 0 auto;
+    display: block;
+  }
 }
 
 @media (max-width: 600px) {
-  .steps-grid { grid-template-columns: 1fr; }
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
 
-  .editor-panel { padding: 20px; }
+  .editor-panel {
+    padding: 20px;
+  }
 
-  .link-box { flex-direction: column; }
+  .link-box {
+    flex-direction: column;
+  }
 }
