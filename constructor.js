@@ -34,136 +34,6 @@ function imagePicker(stepKey, field, current) {
   return html;
 }
 
-function bindPreviewEvents() {
-  var preview = previewEl();
-  if (!preview) return;
-
-  var yesBtn = preview.querySelector(".interactive-yes");
-  if (yesBtn) {
-    var newYesBtn = yesBtn.cloneNode(true);
-    yesBtn.parentNode.replaceChild(newYesBtn, yesBtn);
-
-    newYesBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      var container = preview;
-      var anim = currentConfig.screen1.yesAnim || "hearts";
-
-      if (anim === "hearts") {
-        playYesAnimation(container, function () {
-          console.log('Анимация "Да" завершена в превью');
-        });
-      } else {
-        newYesBtn.style.transform = "scale(0.95)";
-        setTimeout(function () {
-          newYesBtn.style.transform = "";
-        }, 200);
-      }
-    });
-  }
-
-  var noBtn = preview.querySelector(".interactive-no");
-  if (noBtn) {
-    var newNoBtn = noBtn.cloneNode(true);
-    noBtn.parentNode.replaceChild(newNoBtn, noBtn);
-
-    var anim = currentConfig.screen1.noAnim || "kiss";
-    setupNoButton(newNoBtn, anim, preview, function () {
-      console.log('Кнопка "Нет" исчезла в превью');
-      setTimeout(function () {
-        updatePreview();
-      }, 2000);
-    });
-  }
-
-  var confirmBtn = preview.querySelector(".interactive-confirm");
-  if (confirmBtn) {
-    var newConfirmBtn = confirmBtn.cloneNode(true);
-    confirmBtn.parentNode.replaceChild(newConfirmBtn, confirmBtn);
-
-    newConfirmBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      newConfirmBtn.style.transform = "scale(0.95)";
-      setTimeout(function () {
-        newConfirmBtn.style.transform = "";
-      }, 200);
-    });
-  }
-
-  var dateSubmitBtn = preview.querySelector(".date-submit");
-  if (dateSubmitBtn) {
-    var newDateBtn = dateSubmitBtn.cloneNode(true);
-    dateSubmitBtn.parentNode.replaceChild(newDateBtn, dateSubmitBtn);
-
-    newDateBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      var dateInput = preview.querySelector(".date-input");
-      var timeInput = preview.querySelector(".time-input");
-
-      if (dateInput && timeInput && dateInput.value && timeInput.value) {
-        newDateBtn.style.transform = "scale(0.95)";
-        setTimeout(function () {
-          newDateBtn.style.transform = "";
-        }, 200);
-        console.log("Дата и время выбраны в превью");
-      } else {
-        newDateBtn.style.transform = "scale(0.95)";
-        setTimeout(function () {
-          newDateBtn.style.transform = "";
-        }, 200);
-        var hint = preview.querySelector(".date-hint");
-        if (!hint) {
-          var h = document.createElement("p");
-          h.className = "date-hint";
-          h.style.cssText =
-            "color: #db2777; font-size: 0.8rem; margin-top: 8px;";
-          h.textContent = "Выберите дату и время";
-          newDateBtn.parentNode.appendChild(h);
-          setTimeout(function () {
-            if (h.parentNode) h.remove();
-          }, 1500);
-        }
-      }
-    });
-
-    updateDateButtonState(preview);
-  }
-
-  var foodCards = preview.querySelectorAll(".food-card");
-  foodCards.forEach(function (card) {
-    var newCard = card.cloneNode(true);
-    card.parentNode.replaceChild(newCard, card);
-
-    newCard.addEventListener("click", function (e) {
-      e.preventDefault();
-      preview.querySelectorAll(".food-card").forEach(function (c) {
-        c.classList.remove("selected");
-      });
-      newCard.classList.add("selected");
-    });
-  });
-}
-
-function updateDateButtonState(preview) {
-  var dateInput = preview.querySelector(".date-input");
-  var timeInput = preview.querySelector(".time-input");
-  var submitBtn = preview.querySelector(".date-submit");
-
-  if (dateInput && timeInput && submitBtn) {
-    function check() {
-      submitBtn.disabled = !dateInput.value || !timeInput.value;
-    }
-    var newDateInput = dateInput.cloneNode(true);
-    dateInput.parentNode.replaceChild(newDateInput, dateInput);
-
-    var newTimeInput = timeInput.cloneNode(true);
-    timeInput.parentNode.replaceChild(newTimeInput, timeInput);
-
-    newDateInput.addEventListener("input", check);
-    newTimeInput.addEventListener("input", check);
-    check();
-  }
-}
-
 function renderStep1() {
   var panel = editorPanel();
   if (!panel) return;
@@ -186,10 +56,10 @@ function renderStep1() {
     '<div class="field"><label>Анимация «Да»</label><div class="radio-group">' +
     '<label class="radio-option"><input type="radio" name="yesAnim" value="hearts" ' +
     (currentConfig.screen1.yesAnim === "hearts" ? "checked" : "") +
-    "><div><strong>Тряска и взрыв</strong><span>Тряска, исчезновение и взрыв сердец из центра</span></div></label>" +
+    "><div><strong>Тряска и взрыв</strong><span>Тряска, исчезновение и взрыв сердец</span></div></label>" +
     '<label class="radio-option"><input type="radio" name="yesAnim" value="none" ' +
     (currentConfig.screen1.yesAnim === "none" ? "checked" : "") +
-    "><div><strong>Без анимации</strong><span>Нажмите на кнопку — так увидит получатель</span></div></label>" +
+    "><div><strong>Без анимации</strong></div></label>" +
     "</div></div>" +
     '<div class="field"><label>Анимация «Нет»</label><div class="radio-group">' +
     '<label class="radio-option"><input type="radio" name="noAnim" value="kiss" ' +
@@ -197,13 +67,13 @@ function renderStep1() {
     "><div><strong>Поцелуй</strong><span>Кнопка прячется за поцелуем</span></div></label>" +
     '<label class="radio-option"><input type="radio" name="noAnim" value="shrink" ' +
     (currentConfig.screen1.noAnim === "shrink" ? "checked" : "") +
-    "><div><strong>Уменьшение</strong><span>С каждым нажатием всё меньше, пока не исчезнет</span></div></label>" +
+    "><div><strong>Уменьшение</strong><span>С каждым нажатием всё меньше</span></div></label>" +
     '<label class="radio-option"><input type="radio" name="noAnim" value="run" ' +
     (currentConfig.screen1.noAnim === "run" ? "checked" : "") +
     "><div><strong>Убегание</strong><span>Кнопка убегает от курсора</span></div></label>" +
     '<label class="radio-option"><input type="radio" name="noAnim" value="none" ' +
     (currentConfig.screen1.noAnim === "none" ? "checked" : "") +
-    "><div><strong>Без анимации</strong><span>Нажмите на кнопку — появится поцелуй</span></div></label>" +
+    "><div><strong>Без анимации</strong></div></label>" +
     "</div></div>" +
     '<h3 class="editor-subtitle">Экран 2 — подтверждение</h3>' +
     imagePicker("step2", "screen2", currentConfig.screen2.image) +
@@ -225,6 +95,7 @@ function bindStep1Events() {
   var panel = editorPanel();
   if (!panel) return;
 
+  // Выбор изображений
   var pickers = panel.querySelectorAll(".image-picker");
   if (pickers[0]) {
     var opts = pickers[0].querySelectorAll(".image-option");
@@ -251,6 +122,7 @@ function bindStep1Events() {
     }
   }
 
+  // Текстовые поля
   var fields = [
     { id: "s1-title", obj: currentConfig.screen1, key: "title" },
     { id: "s1-yes", obj: currentConfig.screen1, key: "yesText" },
@@ -271,21 +143,21 @@ function bindStep1Events() {
     })(fields[k]);
   }
 
+  // Радиокнопки анимаций
   var yesRadios = panel.querySelectorAll('input[name="yesAnim"]');
   for (var r = 0; r < yesRadios.length; r++) {
     yesRadios[r].addEventListener("change", function () {
       currentConfig.screen1.yesAnim = this.value;
-      updatePreview();
     });
   }
   var noRadios = panel.querySelectorAll('input[name="noAnim"]');
   for (var s = 0; s < noRadios.length; s++) {
     noRadios[s].addEventListener("change", function () {
       currentConfig.screen1.noAnim = this.value;
-      updatePreview();
     });
   }
 
+  // Кнопка "Продолжить"
   var nextBtn = document.getElementById("next-step");
   if (nextBtn) {
     nextBtn.addEventListener("click", function () {
@@ -312,6 +184,7 @@ function renderStep2() {
     '"></div>' +
     '<div class="editor-nav"><button class="btn btn-ghost" id="prev-step">← Назад</button><button class="btn btn-primary" id="next-step">Продолжить</button></div>';
 
+  // Выбор изображения
   var opts = panel.querySelectorAll(".image-option");
   for (var i = 0; i < opts.length; i++) {
     (function (opt) {
@@ -323,6 +196,7 @@ function renderStep2() {
     })(opts[i]);
   }
 
+  // Текстовые поля
   var titleEl = document.getElementById("s3-title");
   if (titleEl) {
     titleEl.addEventListener("input", function () {
@@ -338,6 +212,7 @@ function renderStep2() {
     });
   }
 
+  // Кнопки
   var prevBtn = document.getElementById("prev-step");
   if (prevBtn) {
     prevBtn.addEventListener("click", function () {
@@ -403,6 +278,7 @@ function renderStep3() {
     '<button class="btn btn-secondary" id="add-dish" style="margin-top:12px;width:100%">+ Добавить блюдо</button>' +
     '<div class="editor-nav"><button class="btn btn-ghost" id="prev-step">← Назад</button><button class="btn btn-primary" id="next-step">Продолжить</button></div>';
 
+  // Заголовки
   var titleEl = document.getElementById("s4-title");
   if (titleEl) {
     titleEl.addEventListener("input", function () {
@@ -418,6 +294,7 @@ function renderStep3() {
     });
   }
 
+  // Блюда - эмодзи
   var emojiInputs = panel.querySelectorAll(".dish-emoji-input");
   for (var e = 0; e < emojiInputs.length; e++) {
     (function (inp) {
@@ -431,6 +308,7 @@ function renderStep3() {
     })(emojiInputs[e]);
   }
 
+  // Блюда - названия
   var nameInputs = panel.querySelectorAll('[data-field="name"]');
   for (var n = 0; n < nameInputs.length; n++) {
     (function (inp) {
@@ -444,6 +322,7 @@ function renderStep3() {
     })(nameInputs[n]);
   }
 
+  // Удаление блюда
   var deleteBtns = panel.querySelectorAll(".btn-delete");
   for (var d = 0; d < deleteBtns.length; d++) {
     (function (btn) {
@@ -458,6 +337,7 @@ function renderStep3() {
     })(deleteBtns[d]);
   }
 
+  // Добавление блюда
   var addBtn = document.getElementById("add-dish");
   if (addBtn) {
     addBtn.addEventListener("click", function () {
@@ -468,6 +348,7 @@ function renderStep3() {
     });
   }
 
+  // Кнопки навигации
   var prevBtn = document.getElementById("prev-step");
   if (prevBtn) {
     prevBtn.addEventListener("click", function () {
@@ -501,6 +382,7 @@ function renderStep4() {
     "</textarea></div>" +
     '<div class="editor-nav"><button class="btn btn-ghost" id="prev-step">← Назад</button><button class="btn btn-primary" id="create-invite">Создать приглашение ❤️</button></div>';
 
+  // Выбор изображения
   var opts = panel.querySelectorAll(".image-option");
   for (var i = 0; i < opts.length; i++) {
     (function (opt) {
@@ -512,6 +394,7 @@ function renderStep4() {
     })(opts[i]);
   }
 
+  // Заголовок
   var titleEl = document.getElementById("s5-title");
   if (titleEl) {
     titleEl.addEventListener("input", function () {
@@ -520,6 +403,7 @@ function renderStep4() {
     });
   }
 
+  // Описание
   var descEl = document.getElementById("s5-desc");
   if (descEl) {
     descEl.addEventListener("input", function () {
@@ -528,6 +412,7 @@ function renderStep4() {
     });
   }
 
+  // Назад
   var prevBtn = document.getElementById("prev-step");
   if (prevBtn) {
     prevBtn.addEventListener("click", function () {
@@ -536,6 +421,7 @@ function renderStep4() {
     });
   }
 
+  // Создать приглашение
   var createBtn = document.getElementById("create-invite");
   if (createBtn) {
     createBtn.addEventListener("click", function () {
@@ -572,20 +458,12 @@ function updatePreview() {
   if (currentStep <= 2) {
     var tabs = screenTabs();
     if (tabs) tabs.classList.remove("hidden");
-    el.innerHTML = renderPreview(currentConfig, previewTab, {
-      interactive: true,
-    });
+    el.innerHTML = renderPreview(currentConfig, previewTab);
   } else {
     var tabs2 = screenTabs();
     if (tabs2) tabs2.classList.add("hidden");
-    el.innerHTML = renderPreview(currentConfig, currentStep, {
-      interactive: true,
-    });
+    el.innerHTML = renderPreview(currentConfig, currentStep);
   }
-
-  setTimeout(function () {
-    bindPreviewEvents();
-  }, 50);
 }
 
 function renderStep() {
@@ -603,6 +481,7 @@ function initConstructor() {
   previewTab = 1;
   currentConfig = cloneConfig();
 
+  // Настройка вкладок
   var tabs = screenTabs();
   if (tabs) {
     var tabBtns = tabs.querySelectorAll(".tab");
@@ -626,5 +505,6 @@ function initConstructor() {
   renderStep();
 }
 
+// Делаем функции глобальными
 window.initConstructor = initConstructor;
 window.currentConfig = currentConfig;
