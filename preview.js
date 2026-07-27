@@ -23,8 +23,9 @@ function renderScreen1(config, interactive) {
   );
 }
 
-function renderScreen2(config) {
+function renderScreen2(config, interactive) {
   var s = config.screen2;
+  var confirmClass = interactive ? "btn-yes interactive-confirm" : "btn-yes";
   return (
     '<div class="screen-content" data-screen="2">' +
     renderIllustration(s.image) +
@@ -34,7 +35,9 @@ function renderScreen2(config) {
     '<p class="screen-subtitle">' +
     s.subtitle +
     "</p>" +
-    '<button class="btn btn-yes interactive-confirm">' +
+    '<button class="btn ' +
+    confirmClass +
+    '">' +
     s.confirmText +
     "</button>" +
     "</div>"
@@ -129,7 +132,7 @@ function renderPreview(config, screen, extra) {
     case 1:
       return renderScreen1(config, extra.interactive);
     case 2:
-      return renderScreen2(config);
+      return renderScreen2(config, extra.interactive);
     case 3:
       return renderScreen3(config, extra);
     case 4:
